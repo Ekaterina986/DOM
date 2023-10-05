@@ -1,15 +1,12 @@
-setInterval(function() {
-    const textActiveList = document.getElementsByClassName('rotator__case');
-    console.log(textActiveList)
-    for ( let textActive of textActiveList) {
-        console.log(textActiv)
-        textActive.classList.remove('rotator__case_active');
-        console.log(textActiv.nextElementSibling);
-        if (textActiv.nextElementSibling) {
-            textActiv.nextElementSibling.classList.add('rotator__case_active');
-        } else {
-            textActiv[0].classList.add('rotator__case_active');
+const rotatorList = document.getElementsByClassName('rotator');
+for ( let rotator of rotatorList) {
+    setInterval(function() {
+        const caseActive = rotator.getElementsByClassName('rotator__case_active')[0];
+        let caseNext = caseActive.nextElementSibling;
+        if (!caseNext) {
+            caseNext = rotator.firstElementChild;
         }
-        
-    }
-  }, 1000)
+        caseActive.classList.remove('rotator__case_active');
+        caseNext.classList.add('rotator__case_active');
+    }, 1000)
+}
